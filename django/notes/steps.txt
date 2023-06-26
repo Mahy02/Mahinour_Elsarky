@@ -1,0 +1,47 @@
+PART 1: INSTALLATIONS AND SET UP
+---------------------------------
+1. Test your python version
+    python --version
+
+2. create the virtual enviornment where you install python packages to isolate from other packages in your system
+    python -m venv foldername
+
+3.Activate enviornment
+    .\foldername\Scripts\activate
+if you run with an error its because Windows disable runnig such scripts so fix with
+PowerShell as admin
+Set-ExecutionPolicy RemoteSigned
+
+4. Install Django
+    `python -m pip install django`
+Test Django 
+    `python -m django --version`
+
+5. Start a new project in the directory
+    `django-admin startproject portfolio .`
+
+6. check project
+    `python manage.py runserver`
+    Note that manage.py runs the server 
+    Default database is sqllite 
+
+7. create an app
+    `python manage.py startapp appname`
+
+Some concepts of apps in django:
+    you have your main django projects then you can create different apps
+    For example, your website might have different functionalities that might be needed in another website
+    Now you are creating a portfolio, later you might need a blog app. You can then use the same functionlities and data.
+    
+8. Add app to settings
+   once you create an app, you must add it in the settings.py in the main django project
+
+9. Install Pillow which is a python Imaging Library
+    `python -m pip install Pillow`
+
+-------------------------------------------------------------------------------------
+
+PART 2: MODELS AND ADMIN INTERFACE
+----------------------------------
+
+1.
