@@ -44,4 +44,34 @@ Some concepts of apps in django:
 PART 2: MODELS AND ADMIN INTERFACE
 ----------------------------------
 
-1.
+1. Create models and apply migrations
+
+    `python manage.py makemigrations`
+    `python manage.py migrate`
+
+2. Create superuser
+    
+    `python manage.py createsuperuser`
+
+3. Add String methods
+
+    def __str__(self):
+        return str(self.id)
+
+4. configure static files path and urls
+
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root/')
+    STATIC_ROOT= os.path.join(BASE_DIR, 'static_root/')
+
+    STATICFILES_DIR =[
+        BASE_DIR / "static",
+    ]
+
+5. Tell Django where to find the static files 
+
+
+
+-----------------------------------------------------------------------------------------------------------------
