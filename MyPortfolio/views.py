@@ -6,10 +6,10 @@ from .models import Home, About, Profile, Project, Internships, Achievement, Stu
 def index(request):
 
     #Home
-    home= Home.objects.latest('updated')
+    home= Home.objects.order_by('-updated').first()
 
     #About
-    about = About.objects.latest('updated')
+    about = About.objects.order_by('-updated').first()
     profiles= Profile.objects.filter(about=about)
 
     #Skills
