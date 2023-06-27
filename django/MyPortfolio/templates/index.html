@@ -26,7 +26,11 @@
                         <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="https://drive.google.com/file/d/1ZvjpBHeLLnHq8WK-l4qYC3nYpVyJZfOy/view?usp=drive_link" class="nav__link nav__link--resume">My Resume</a></li>
+                        <li class="nav__item"><a href="#projects" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="#internships" class="nav__link">Internships</a></li>
+                        <li class="nav__item"><a href="#Activities" class="nav__link"> Activities</a></li>
+                        <li class="nav__item"><a href="#achievements" class="nav__link">Achievements</a></li>
+                        <li class="nav__item"><a href="https://drive.google.com/file/d/1ZvjpBHeLLnHq8WK-l4qYC3nYpVyJZfOy/view?usp=drive_link" class="nav__link nav__link--resume">Resume</a></li>
                     </ul>
                 </div>
 
@@ -128,7 +132,7 @@
             </section>
 
            <!-- INTERNSHIPS SECTION -->
-           <section class="internships section">
+           <section class="internships section" id="internships">
             <h2 class="section-title">Internships</h2>
         
             <div class="internships__container bd-grid">
@@ -161,7 +165,7 @@
 
         
 <!--===== STUDENT ACTIVITIES =====-->
-<section class="student-activities section">
+<section class="student-activities section" id="Activities">
     <h2 class="section-title">Student Activities</h2>
     <div class="student-activities__container bd-grid">
         {% for activity in student_activities %}
@@ -179,7 +183,7 @@
 </section>
 
 <!--===== PROJECTS =====-->
-<section class="projects section">
+<section class="projects section" id="projects">
     <h2 class="section-title">Projects</h2>
     <div class="projects__container bd-grid">
         {% for project in projects %}
@@ -202,7 +206,7 @@
 
 
             <!--===== ACHIEVEMENTS =====-->
-<section class="achievements section" >
+<section class="achievements section" id="achievements">
     <h2 class="section-title">Achievements</h2>
     <div class="achievements__container bd-grid">
         {% for achievement in achievements %}
