@@ -71,7 +71,49 @@ PART 2: MODELS AND ADMIN INTERFACE
     ]
 
 5. Tell Django where to find the static files 
+in urls file:
+`
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+`
 
 
 
 -----------------------------------------------------------------------------------------------------------------
+
+PART 3: VIEWS AND TEMPLATES
+
+1. Write basic view, add index.html in app template folder and configure app urlpatterns
+Inside views:
+`
+def index(request):
+    return render(request, 'index.html')
+
+2. Add assets folder to static_root folder
+
+-add a new folder called statics in django directory and put assets in it
+
+-frontend:
+https://github.com/bedimcode/responsive-portfolio-webiste-JhonDoe
+
+3. Load static files in html file
+
+{% load static %}
+
+4. Write views
+
+5. Add data in Admin interface
+
+6. Load content from views to TEMPLATES
+
+{% static 'assets/css/styles.css' %}
+
+{{model.field}}
+
+
+-----------------------------------------------------------------------------------
+
+PART 4: DEPLOYMENT
+
+Git Download 

@@ -76,7 +76,7 @@ class Internships(models.Model):
     end_date = models.DateField()
     description = models.TextField(blank=False)
     tools_and_technologies = models.ManyToManyField(Technology)   #many internships can have many technologies and one technology can be in many internships
-    image1 = models.ImageField(upload_to='internships/')
+    image1 = models.ImageField(upload_to='internships/', null=True, blank=True)
     image2 = models.ImageField(upload_to='internships/', null=True, blank=True)
 
     def __str__(self):
@@ -92,6 +92,8 @@ class Project(models.Model):
     project_type = models.CharField(max_length=500)
     description = models.TextField(blank=False)
     tools_and_technologies = models.ManyToManyField(Technology)
+
+    updated= models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.project_name

@@ -36,20 +36,28 @@ admin.site.register(Achievement)
 # StudentActivity
 admin.site.register(StudentActivity)
 
+# Technology
+
+admin.site.register(Technology)
+
 # Internships
-class ITechnologyInline(admin.TabularInline):
+
+class TechnologyInline(admin.TabularInline):
     model = Internships.tools_and_technologies.through
     extra = 1
 
 @admin.register(Internships)
 class InternshipsAdmin(admin.ModelAdmin):
-    inlines = [ITechnologyInline]
+    inlines = [TechnologyInline]
+    filter_horizontal = ('tools_and_technologies',)  # Display a horizontal filter widget for technologies
 
 # Project
-class PTechnologyInline(admin.TabularInline):
+class TechnologyInline(admin.TabularInline):
     model = Project.tools_and_technologies.through
     extra = 1
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    inlines = [PTechnologyInline]
+    inlines = [TechnologyInline]
+    filter_horizontal = ('tools_and_technologies',)  # Display a horizontal filter widget for tools and technologies
     

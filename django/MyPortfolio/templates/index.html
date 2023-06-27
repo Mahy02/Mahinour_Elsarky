@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- ===== CSS ===== -->
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+        <!-- ===== BOX ICONS ===== -->
+        <link href='https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Portfolio responsive complete</title>
+    </head>
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">{{ home.name }}</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
+                        <li class="nav__item"><a href="https://drive.google.com/file/d/1ZvjpBHeLLnHq8WK-l4qYC3nYpVyJZfOy/view?usp=drive_link" class="nav__link nav__link--resume">My Resume</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+            <section class="home" id="home">
+                <div class="home__container bd-grid">
+                    <h1 class="home__title"><span>{{home.greetings_1}}</span><br>{{home.greetings_2}}</h1>
+
+                    <div class="home__scroll">
+                        <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt' ></i>Scroll down</a>
+                    </div>
+
+                    <img src="{{ home.picture.url }}" alt="" class="home__img"  >
+                </div>
+            </section>
+            
+            <!--===== ABOUT =====-->
+            <section class="about section" id="about">
+                <h2 class="section-title">About</h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="{{ about.profile_img.url }}" alt="" width="200" height="200" >
+                    </div>
+
+                    <div>
+                        <h2 class="about__subtitle">{{ about.heading }}</h2>
+                        <span class="about__profession">{{ about.career }}</span>
+                        <p class="about__text">{{ about.description }}</p>
+
+                        <!-- <div class="about__social">
+                            <a href="#" class="about__social-icon"><i class='bx bxl-linkedin' ></i></a>
+                            <a href="#" class="about__social-icon"><i class='bx bxl-github' ></i></a>
+                            <a href="#" class="about__social-icon"><i class='bx bxl-twitter' ></i></a>
+                        </div> -->
+                        <div class="about__social about__social-center">
+                            {% for profile in profiles %}
+                            {% if profile.social_name == 'LinkedIn' %}
+                            <a href="{{ profile.link }}" class="about__social-icon" target="_blank" rel="noopener noreferrer">
+                                <i class='bx bxl-linkedin'></i>
+                            </a>
+                            {% elif profile.social_name == 'GitHub' %}
+                            <a href="{{ profile.link }}" class="about__social-icon" target="_blank" rel="noopener noreferrer">
+                                <i class='bx bxl-github'></i>
+                            </a>
+                            {% elif profile.social_name == 'Twitter' %}
+                            <a href="{{ profile.link }}" class="about__social-icon" target="_blank" rel="noopener noreferrer">
+                                <i class='bx bxl-twitter'></i>
+                            </a>
+                            {% elif profile.social_name == 'Email' %}
+                            <a href="mailto:{{ profile.link }}" class="about__social-icon">
+                                <i class='bx bx-envelope'></i>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!--===== SKILLS =====-->
+            <section class="skills section" id="skills">
+                <h2 class="section-title">Skills</h2>
+
+                <div class="skills__container bd-grid">
+                    <div class="skills__box">
+                        
+                        {% for category in categories %}
+                        <h3 class="skills__subtitle">{{category.name}}</h3>
+                            {% for skills in category.skills_set.all %}
+                            
+                                <span class="skills__name">{{skills.skill_name}}</span>
+                            {% endfor %}
+                        {% endfor %}
+                        
+                      
+                    </div>
+
+                    <div class="skills__images">
+                        <div class="skills__img">
+                            <img src="{% static 'assets/img/skills1.png' %}" alt="" style="height: 50%, width= 50%;">
+                        </div>
+                        <div class="skills__img">
+                            <img src="{% static 'assets/img/skills2.png' %}" alt="">
+                        </div>
+                        <div class="skills__img">
+                            <img src="{% static 'assets/img/skills3.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+           <!-- INTERNSHIPS SECTION -->
+           <section class="internships section">
+            <h2 class="section-title">Internships</h2>
+        
+            <div class="internships__container bd-grid">
+                {% for internship in internships %}
+                <div class="internships__item">
+                    <div class="internships__content">
+                        <div class="internships__text">
+                            <h3 class="internships__company">{{ internship.company_name }}</h3>
+                            <span class="internships__role">{{ internship.role }}</span>
+                            <p class="internships__dates">{{ internship.start_date|date:"F Y" }} - {{ internship.end_date|date:"F Y" }}</p>
+                            <p class="internships__description">{{ internship.description }}</p>
+                            <p class="internships__tools">{{ internship.tools_and_technologies.all|join:', ' }}</p>
+                        </div>
+                        <div class="internships__images">
+                            {% if internship.image1 %}
+                            <img src="{{ internship.image1.url }}" alt="Internship Image 1" class="internships__image">
+                            {% endif %}
+                            {% if internship.image2 %}
+                            <img src="{{ internship.image2.url }}" alt="Internship Image 2" class="internships__image">
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+        
+
+        
+<!--===== STUDENT ACTIVITIES =====-->
+<section class="student-activities section">
+    <h2 class="section-title">Student Activities</h2>
+    <div class="student-activities__container bd-grid">
+        {% for activity in student_activities %}
+        <div class="student-activities__item">
+            <img src="{{ activity.image1.url }}" alt="" class="student-activities__img">
+            <div class="student-activities__data">
+                <h3 class="student-activities__name">{{ activity.name }}</h3>
+                <span class="student-activities__role">{{ activity.role }}</span>
+                <p class="student-activities__dates">{{ activity.start_date|date:"F Y" }} - {{ activity.end_date|date:"F Y" }}</p>
+                <p class="student-activities__description">{{ activity.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!--===== PROJECTS =====-->
+<section class="projects section">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects__container bd-grid">
+        {% for project in projects %}
+        <div class="projects__item">
+            <img src="{{ project.image.url }}" alt="" class="projects__img">
+            <div class="projects__data">
+                <h3 class="projects__title">{{ project.project_name }}</h3>
+                <span class="projects__year">{{ project.year }}</span>
+                <p class="projects__type">{{ project.project_type }}</p>
+                <p class="projects__description">{{ project.description }}</p>
+                <div class="projects__technologies">
+                    <span class="projects__tech">{{ project.tools_and_technologies.all|join:', ' }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+            <!--===== ACHIEVEMENTS =====-->
+<section class="achievements section" >
+    <h2 class="section-title">Achievements</h2>
+    <div class="achievements__container bd-grid">
+        {% for achievement in achievements %}
+        <div class="achievements__item">
+            <h3 class="achievements__name">{{ achievement.name }}</h3>
+            <span class="achievements__year">{{ achievement.year }}</span>
+            <p class="achievements__description">{{ achievement.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+        
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer section">
+            <div class="footer__container bd-grid">
+                <div class="footer__data">
+                    <h2 class="footer__title">{{ home.name }}</h2>
+                    <p class="footer__text">I'm {{ home.name }} and this is my personal website</p>
+                </div>
+
+                <div class="footer__data">
+                    <h2 class="footer__title">EXPLORE</h2>
+                    <ul>
+                        <li><a href="#home" class="footer__link">Home</a></li>
+                        <li><a href="#about" class="footer__link">About</a></li>
+                        <li><a href="#skills" class="footer__link">Skills</a></li>
+                        
+                    </ul>
+                </div>
+                
+                <div class="footer__data">
+                    <h2 class="footer__title">FOLLOW</h2>
+                    <!-- <a href="#" class="footer__social"><i class='bx bxl-facebook' ></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-instagram' ></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-twitter' ></i></a> -->
+
+                    
+                        {% for profile in profiles %}
+                        {% if profile.social_name == 'LinkedIn' %}
+                        <a href="{{ profile.link }}" class="about__social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-linkedin'></i>
+                        </a>
+                        {% elif profile.social_name == 'GitHub' %}
+                        <a href="{{ profile.link }}" class="about__social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-github'></i>
+                        </a>
+                        {% elif profile.social_name == 'Twitter' %}
+                        <a href="{{ profile.link }}" class="about__social-icon" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-twitter'></i>
+                        </a>
+                        {% elif profile.social_name == 'Email' %}
+                        <a href="mailto:{{ profile.link }}" class="about__social-icon">
+                            <i class='bx bx-envelope'></i>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                   
+                    
+                </div>
+
+
+            </div>
+        </footer>
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="{% static 'assets/js/main.js' %}"></script>
+    </body>
+</html>
