@@ -50,7 +50,9 @@
                         <a href="#about" class="home__scroll-link"><i class='bx bx-up-arrow-alt' ></i>Scroll down</a>
                     </div>
 
-                    <img src="{{ home.picture.url }}" alt="" class="home__img"  >
+                    <!-- <img src="{{ home.picture.url }}" alt="" class="home__img"  > -->
+                    <img src="{% static 'assets/img/home.png' %}" alt="" class="home__img"  >
+                    
                 </div>
             </section>
             
@@ -60,7 +62,9 @@
 
                 <div class="about__container bd-grid">
                     <div class="about__img">
-                        <img src="{{ about.profile_img.url }}" alt="" width="200" height="200" >
+                        <!-- <img src="{{ about.profile_img.url }}" alt="" width="200" height="200" > -->
+                        <img src="{% static 'assets/img/about.jpg' %}" alt="" width="200" height="200" >
+                        
                     </div>
 
                     <div>
@@ -147,12 +151,18 @@
                             <p class="internships__tools">{{ internship.tools_and_technologies.all|join:', ' }}</p>
                         </div>
                         <div class="internships__images">
-                            {% if internship.image1 %}
+                            {% if 'Google Summer Of Code at Liquid Galaxy organization' in internship.company_name %}
+                                <img src="{% static 'assets/img/gsoc.jpg' %}" alt="Curt Image" class="internships__image">
+                            {% elif 'NBE' in internship.company_name %}
+                                <img src="{% static 'assets/img/nbe.jpg' %}" alt="GSOC Image" class="internships__image">
+                            {% endif %}
+
+                            <!-- {% if internship.image1 %}
                             <img src="{{ internship.image1.url }}" alt="Internship Image 1" class="internships__image">
                             {% endif %}
                             {% if internship.image2 %}
                             <img src="{{ internship.image2.url }}" alt="Internship Image 2" class="internships__image">
-                            {% endif %}
+                            {% endif %} -->
                         </div>
                         
                     </div>
@@ -170,7 +180,9 @@
     <div class="student-activities__container bd-grid">
         {% for activity in student_activities %}
         <div class="student-activities__item">
-            <img src="{{ activity.image1.url }}" alt="" class="student-activities__img">
+            <!-- <img src="{{ activity.image1.url }}" alt="" class="student-activities__img"> -->
+            <img src=" {% static 'assets/img/curt.jpg' %}" alt="" class="student-activities__img">
+           
             <div class="student-activities__data">
                 <h3 class="student-activities__name">{{ activity.name }}</h3>
                 <span class="student-activities__role">{{ activity.role }}</span>

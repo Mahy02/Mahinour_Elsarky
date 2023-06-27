@@ -28,6 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['mahy-dolphincoder.azurewebsites.net', 
                  '127.0.0.1'
+                 '*',
                  ]
 
 
