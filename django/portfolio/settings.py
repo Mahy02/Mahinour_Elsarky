@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-n5b=shmqn@hpo%lh)zq%hwsv8=qe5jgs$%bv^hl(kx)+!w)@r$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mahy-dolphincoder.azurewebsites.net']
+ALLOWED_HOSTS = ['mahy-dolphincoder.azurewebsites.net', 
+                 '127.0.0.1'
+                 ]
 
 
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    "whitenoise.runserver_nostatic",
     'MyPortfolio',
 ]
 
