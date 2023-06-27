@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n5b=shmqn@hpo%lh)zq%hwsv8=qe5jgs$%bv^hl(kx)+!w)@r$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mahy-dolphincoder.azurewebsites.net', 
-                 '127.0.0.1'
+                 '127.0.0.1',
                  '*',
                  ]
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     "whitenoise.runserver_nostatic",
     'MyPortfolio',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
