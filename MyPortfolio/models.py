@@ -69,6 +69,13 @@ class Technology(models.Model):
     def __str__(self):
         return self.name
     
+class Link(models.Model):
+    url = models.URLField(max_length=200)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+    
 class Internships(models.Model):
     company_name = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
@@ -78,9 +85,12 @@ class Internships(models.Model):
     tools_and_technologies = models.ManyToManyField(Technology)   #many internships can have many technologies and one technology can be in many internships
     image1 = models.ImageField(upload_to='internships/', null=True, blank=True)
     image2 = models.ImageField(upload_to='internships/', null=True, blank=True)
+    links = models.ManyToManyField(Link, related_name='internships')
 
     def __str__(self):
         return self.company_name
+    class Meta:
+        ordering = ['-start_date']
     
 
 # PROJECTS SECTION
@@ -92,6 +102,7 @@ class Project(models.Model):
     project_type = models.CharField(max_length=500)
     description = models.TextField(blank=False)
     tools_and_technologies = models.ManyToManyField(Technology)
+    links = models.ManyToManyField(Link, related_name='projects')
 
     updated= models.DateTimeField(auto_now=True)
 
@@ -127,6 +138,8 @@ class Achievement(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        ordering = ['-year']
 
 
     

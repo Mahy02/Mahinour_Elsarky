@@ -149,14 +149,37 @@
                             <p class="internships__dates">{{ internship.start_date|date:"F Y" }} - {{ internship.end_date|date:"F Y" }}</p>
                             <p class="internships__description">{{ internship.description }}</p>
                             <p class="internships__tools">{{ internship.tools_and_technologies.all|join:', ' }}</p>
-                        </div>
-                        <div class="internships__images">
-                            {% if 'Google Summer Of Code at Liquid Galaxy organization' in internship.company_name %}
-                                <img src="{% static 'assets/img/gsoc.jpg' %}" alt="Curt Image" class="internships__image">
-                            {% elif 'NBE' in internship.company_name %}
-                                <img src="{% static 'assets/img/nbe.jpg' %}" alt="GSOC Image" class="internships__image">
-                            {% endif %}
 
+                            <br>
+                             <!-- Links for Internship -->
+                                                            
+                                    <ul style="list-style: none; padding: 0;">
+                                        {% for link in internship.links.all %}
+                                            <li style="margin-bottom: 10px;">
+                                                <a href="{{ link.url }}" target="_blank" style="font-size: smaller; display: flex; align-items: center;">
+                                                    <!-- text-decoration: underline; color: blue;  -->
+                                                    <img src="{% static 'assets/img/link.png' %}" alt="Link Icon" style="vertical-align: middle; margin-right: 5px;">
+                                                    {{ link.name }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                        </div>
+                        <div>
+                            <!-- {% if 'Google Summer Of Code at Liquid Galaxy organization' in internship.company_name %}
+                                <img src="{% static 'assets/img/gsoc.jpg' %}" alt="Curt Image">
+                            {% elif 'NBE' in internship.company_name %}
+                                <img src="{% static 'assets/img/nbe.jpg' %}" alt="GSOC Image">
+                             
+                            {% endif %} -->
+                               <!-- class="internships__image" -->
+
+                            {% if 'Google Summer Of Code at Liquid Galaxy organization' in internship.company_name %}
+                            <img src="{% static 'assets/img/gsoc.jpg' %}" alt="Curt Image" style="display: block; margin: 0 auto; width: 50%; height: 50%;">
+                          {% elif 'NBE' in internship.company_name %}
+                            <img src="{% static 'assets/img/nbe.jpg' %}" alt="GSOC Image" style="display: block; margin: 0 auto; width: 50%; height: 50%;">
+                          {% endif %}
+                          
                             <!-- {% if internship.image1 %}
                             <img src="{{ internship.image1.url }}" alt="Internship Image 1" class="internships__image">
                             {% endif %}
@@ -201,14 +224,33 @@
         {% for project in projects %}
         <div class="projects__item">
             <img src="{{ project.image.url }}" alt="" class="projects__img">
+           
+          
+            
             <div class="projects__data">
+                  <!-- Links for Projects -->
+            {% if project.links.exists %}    
+             <ul style="list-style: none; padding: 0;">
+                {% for link in project.links.all %}
+                    <li style="margin-bottom: 10px;">
+                        <a href="{{ link.url }}" target="_blank" style="font-size: smaller; display: flex; align-items: center;  font-size: 18px; font-weight: bold;">
+                            <!-- text-decoration: underline; color: blue;  -->
+                            <img src="{% static 'assets/img/link.png' %}" alt="Link Icon" style="vertical-align: middle; margin-right: 5px;">
+                             {{ project.project_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+                {% else %}
                 <h3 class="projects__title">{{ project.project_name }}</h3>
+                {% endif %}
                 <span class="projects__year">{{ project.year }}</span>
                 <p class="projects__type">{{ project.project_type }}</p>
                 <p class="projects__description">{{ project.description }}</p>
                 <div class="projects__technologies">
                     <span class="projects__tech">{{ project.tools_and_technologies.all|join:', ' }}</span>
                 </div>
+                 
             </div>
         </div>
         {% endfor %}

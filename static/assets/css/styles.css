@@ -532,9 +532,39 @@ max-height: 200%;
 
 
 /*===== INTERNSHIPS =====*/
-.internships {
+/* .internships {
     padding: 80px 0;
+  } */
+
+
+  /* .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.internships__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
   }
+
+
+/*   
+  .image-container {
+    display: block;
+    margin: 0 auto;
+  } */
+.internships__images {
+    display: flex;
+    justify-content: center; /* Horizontally center the images */
+    align-items: center; /* Vertically center the images */
+    /* Add any other necessary styling here */
+}
+
+
   
   .section-title {
     font-size: 24px;
@@ -553,7 +583,7 @@ max-height: 200%;
   
   .internships__content {
     flex: 1;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
   }
   
   .internships__text {
@@ -592,7 +622,11 @@ max-height: 200%;
     color: #c80303;
   }
   
-  .internships__images {
+  .internship_image {
+    display: block;
+    margin: 0 auto;
+  }
+  /* .internships__images {
     flex: 0 0 200px;
     display: flex;
     justify-content: center;
@@ -607,7 +641,7 @@ max-height: 200%;
     margin-left: 350px;
     margin-bottom: 20px;
     border-radius: 8px;
-  }
+  } */
   
   .internships__images:after {
     content: "";
@@ -619,6 +653,12 @@ max-height: 200%;
     transition: box-shadow 0.3s ease-in-out;
   }
   
+  @media only screen and (max-width: 600px) {
+    .image-container {
+      display: block;
+      margin: 0 auto;
+    }
+  }
   
   
   /*===== STUDENT ACTIVITIES =====*/
